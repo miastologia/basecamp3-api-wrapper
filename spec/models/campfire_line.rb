@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'TODO Model' do
+describe 'CampfireLine Model' do
   include RequestHelpers
   include JSONFixtures
 
