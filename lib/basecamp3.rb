@@ -16,6 +16,7 @@ require 'basecamp3/models/vault'
 require 'basecamp3/models/campfire'
 require 'basecamp3/models/campfire_line'
 require 'basecamp3/models/message_board'
+require 'basecamp3/models/message'
 
 module Basecamp3
   class << self
