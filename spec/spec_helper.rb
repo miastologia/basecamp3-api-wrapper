@@ -16,6 +16,8 @@ require 'models/person'
 require 'models/project'
 require 'models/comment'
 require 'models/vault'
+require 'models/campfire'
+require 'models/campfire_line'
 
 WebMock.disable_net_connect!(allow_localhost: true)
 

@@ -13,6 +13,8 @@ require 'basecamp3/models/todo_list'
 require 'basecamp3/models/todo'
 require 'basecamp3/models/comment'
 require 'basecamp3/models/vault'
+require 'basecamp3/models/campfire'
+require 'basecamp3/models/campfire_line'
 
 module Basecamp3
   class << self
