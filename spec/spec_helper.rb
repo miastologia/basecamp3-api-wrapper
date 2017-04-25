@@ -18,6 +18,7 @@ require 'models/comment'
 require 'models/vault'
 require 'models/campfire'
 require 'models/campfire_line'
+require 'models/message_board'
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
