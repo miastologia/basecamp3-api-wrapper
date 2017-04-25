@@ -12,6 +12,7 @@ require 'basecamp3/models/todo_set'
 require 'basecamp3/models/todo_list'
 require 'basecamp3/models/todo'
 require 'basecamp3/models/comment'
+require 'basecamp3/models/vault'
 
 module Basecamp3
   class << self

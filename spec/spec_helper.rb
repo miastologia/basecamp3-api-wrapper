@@ -15,6 +15,7 @@ require 'models/todo'
 require 'models/person'
 require 'models/project'
 require 'models/comment'
+require 'models/vault'
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
