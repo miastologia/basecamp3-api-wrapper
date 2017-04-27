@@ -9,6 +9,10 @@ class Basecamp3::Inbox < Basecamp3::Model
                 :title,
                 :forwards_count
 
+  def forwards
+    @mapped_forwards ||= Basecamp3::Forward.all(bucket.id, id)
+  end
+
   def self.find(bucket_id, id)
     Basecamp3.request.get("/buckets/#{bucket_id}/inboxes/#{id}", {}, Basecamp3::Inbox)
   end

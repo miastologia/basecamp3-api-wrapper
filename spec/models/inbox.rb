@@ -14,27 +14,41 @@ describe 'Inbox Model' do
     establish_connection
   end
 
-  it 'returns a specific inbox' do
-    stub_http_request(:get, "/buckets/#{@bucket_id}/inboxes/#{@id}", @fixtures_object)
+  describe 'Class' do
+    it 'returns a specific inbox' do
+      stub_http_request(:get, "/buckets/#{@bucket_id}/inboxes/#{@id}", @fixtures_object)
 
-    inbox = Basecamp3::Inbox.find(@bucket_id, @id)
-    expected_inbox = json_to_model(@fixtures_object, Basecamp3::Inbox)
+      inbox = Basecamp3::Inbox.find(@bucket_id, @id)
+      expected_inbox = json_to_model(@fixtures_object, Basecamp3::Inbox)
 
-    expect(inbox).to be_instance_of Basecamp3::Inbox
-    expect(inbox.id).to eq(expected_inbox.id)
+      expect(inbox).to be_instance_of Basecamp3::Inbox
+      expect(inbox.id).to eq(expected_inbox.id)
+    end
   end
 
-  it 'is creatorable' do
-    stub_http_request(:get, "/buckets/#{@bucket_id}/inboxes/#{@id}", @fixtures_object)
+  describe 'Object' do
+    it 'returns a list of forwards' do
+      stub_http_request(:get, "/buckets/#{@bucket_id}/inboxes/#{@id}", @fixtures_object)
 
-    inbox = Basecamp3::Inbox.find(@bucket_id, @id)
-    expect(inbox.creator).to be_instance_of(Basecamp3::Person)
-  end
+      inbox = Basecamp3::Inbox.find(@bucket_id, @id)
 
-  it 'is bucketable' do
-    stub_http_request(:get, "/buckets/#{@bucket_id}/inboxes/#{@id}", @fixtures_object)
+      stub_http_request(:get, "/buckets/#{inbox.bucket.id}/inboxes/#{inbox.id}/forwards", 'forwards.json')
 
-    inbox = Basecamp3::Inbox.find(@bucket_id, @id)
-    expect(inbox.bucket).to be_instance_of(Basecamp3::Project)
+      expect(inbox.forwards).to all be_instance_of(Basecamp3::Forward)
+    end
+
+    it 'is creatorable' do
+      stub_http_request(:get, "/buckets/#{@bucket_id}/inboxes/#{@id}", @fixtures_object)
+
+      inbox = Basecamp3::Inbox.find(@bucket_id, @id)
+      expect(inbox.creator).to be_instance_of(Basecamp3::Person)
+    end
+
+    it 'is bucketable' do
+      stub_http_request(:get, "/buckets/#{@bucket_id}/inboxes/#{@id}", @fixtures_object)
+
+      inbox = Basecamp3::Inbox.find(@bucket_id, @id)
+      expect(inbox.bucket).to be_instance_of(Basecamp3::Project)
+    end
   end
 end
