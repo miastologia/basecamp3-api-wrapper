@@ -11,6 +11,10 @@ class Basecamp3::Question < Basecamp3::Model
                 :paused,
                 :answers_count
 
+  def answers
+    @mapped_answers ||= Basecamp3::QuestionAnswer.all(bucket.id, id)
+  end
+
   ##
   # Optional query parameters:
   # page - to paginate results
