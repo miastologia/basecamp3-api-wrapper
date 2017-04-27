@@ -10,6 +10,10 @@ class Basecamp3::Campfire < Basecamp3::Model
 
   REQUIRED_FIELDS = %w(topic)
 
+  def lines
+    @mapped_lines ||= Basecamp3::CampfireLine.all(bucket.id, id)
+  end
+
   ##
   # Optional query parameters:
   # page - to paginate results
