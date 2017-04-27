@@ -24,6 +24,7 @@ require 'basecamp3/models/schedule_entry'
 require 'basecamp3/models/question'
 require 'basecamp3/models/question_answer'
 require 'basecamp3/models/questionnairy'
+require 'basecamp3/models/inbox'
 
 module Basecamp3
   class << self
