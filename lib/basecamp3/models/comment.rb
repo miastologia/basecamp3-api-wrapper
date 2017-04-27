@@ -2,6 +2,7 @@ class Basecamp3::Comment < Basecamp3::Model
   include Basecamp3::Concerns::Creatorable
   include Basecamp3::Concerns::Bucketable
   include Basecamp3::Concerns::Parentable
+  include Basecamp3::Concerns::Recordingable
 
   attr_accessor :id,
                 :status,
@@ -34,9 +35,5 @@ class Basecamp3::Comment < Basecamp3::Model
   def self.update(bucket_id, id, data)
     self.validate_required(data)
     Basecamp3.request.put("/buckets/#{bucket_id}/comments/#{id}", data, Basecamp3::Comment)
-  end
-
-  def self.delete(bucket_id, id)
-    Basecamp3.request.put("/buckets/#{bucket_id}/recordings/#{id}/status/trashed")
   end
 end

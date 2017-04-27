@@ -10,6 +10,7 @@ require 'basecamp3/model'
 require 'basecamp3/concerns/creatorable'
 require 'basecamp3/concerns/bucketable'
 require 'basecamp3/concerns/parentable'
+require 'basecamp3/concerns/recordingable'
 
 require 'basecamp3/models/project'
 require 'basecamp3/models/person'
