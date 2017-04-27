@@ -3,14 +3,14 @@ class Basecamp3::Document < Basecamp3::Model
   include Basecamp3::Concerns::Bucketable
   include Basecamp3::Concerns::Parentable
   include Basecamp3::Concerns::Recordingable
+  include Basecamp3::Concerns::Commentable
 
   attr_accessor :id,
                 :status,
                 :created_at,
                 :updated_at,
                 :title,
-                :content,
-                :comments_count
+                :content
 
   REQUIRED_FIELDS = %w(title content)
 

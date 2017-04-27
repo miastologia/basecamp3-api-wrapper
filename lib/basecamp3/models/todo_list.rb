@@ -3,6 +3,7 @@ class Basecamp3::TodoList < Basecamp3::Model
   include Basecamp3::Concerns::Bucketable
   include Basecamp3::Concerns::Parentable
   include Basecamp3::Concerns::Recordingable
+  include Basecamp3::Concerns::Commentable
 
   attr_accessor :id,
                 :status,
@@ -10,7 +11,6 @@ class Basecamp3::TodoList < Basecamp3::Model
                 :updated_at,
                 :name,
                 :description,
-                :comments_count,
                 :completed,
                 :completed_ratio
 

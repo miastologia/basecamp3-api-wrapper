@@ -3,6 +3,7 @@ class Basecamp3::ScheduleEntry < Basecamp3::Model
   include Basecamp3::Concerns::Bucketable
   include Basecamp3::Concerns::Parentable
   include Basecamp3::Concerns::Recordingable
+  include Basecamp3::Concerns::Commentable
 
   attr_accessor :id,
                 :status,
@@ -12,8 +13,7 @@ class Basecamp3::ScheduleEntry < Basecamp3::Model
                 :description,
                 :starts_at,
                 :ends_at,
-                :all_day,
-                :comments_count
+                :all_day
 
   REQUIRED_FIELDS = %w(summary starts_at ends_at)
 
