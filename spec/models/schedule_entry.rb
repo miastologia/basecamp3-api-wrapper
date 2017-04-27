@@ -89,6 +89,14 @@ describe 'ScheduleEntry Model' do
       expect(schedule_entry.comments).to all be_instance_of(Basecamp3::Comment)
     end
 
+    it 'returns a list of participants' do
+      stub_http_request(:get, "/buckets/#{@bucket_id}/schedule_entries/#{@id}", @fixtures_object)
+
+      schedule_entry = Basecamp3::ScheduleEntry.find(@bucket_id, @id)
+
+      expect(schedule_entry.participants).to all be_instance_of(Basecamp3::Person)
+    end
+
     it 'is creatorable' do
       stub_http_request(:get, "/buckets/#{@bucket_id}/schedule_entries/#{@id}", @fixtures_object)
 

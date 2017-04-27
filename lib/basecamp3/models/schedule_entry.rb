@@ -17,6 +17,12 @@ class Basecamp3::ScheduleEntry < Basecamp3::Model
 
   REQUIRED_FIELDS = %w(summary starts_at ends_at)
 
+  def participants
+    return [] if @participants.nil?
+
+    @mapped_participants ||= @participants.map{ |p| Basecamp3::Person.new(p) }
+  end
+
   ##
   # Optional query parameters:
   # status - when set to archived or trashed, will return archived or trashed schedule entries that are in this schedule
