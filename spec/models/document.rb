@@ -71,4 +71,25 @@ describe 'Document Model' do
 
     expect(response).to be true
   end
+
+  it 'is creatorable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/documents/#{@id}", @fixtures_object)
+
+    document = Basecamp3::Document.find(@bucket_id, @id)
+    expect(document.creator).to be_instance_of(Basecamp3::Person)
+  end
+
+  it 'is bucketable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/documents/#{@id}", @fixtures_object)
+
+    document = Basecamp3::Document.find(@bucket_id, @id)
+    expect(document.bucket).to be_instance_of(Basecamp3::Project)
+  end
+
+  it 'is parentable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/documents/#{@id}", @fixtures_object)
+
+    document = Basecamp3::Document.find(@bucket_id, @id)
+    expect(document.parent).to be_instance_of(Basecamp3::Vault)
+  end
 end

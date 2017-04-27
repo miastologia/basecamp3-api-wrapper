@@ -23,4 +23,18 @@ describe 'Questionnaire Model' do
     expect(questionnaire).to be_instance_of Basecamp3::Questionnaire
     expect(questionnaire.id).to eq(expected_questionnaire.id)
   end
+
+  it 'is creatorable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/questionnaires/#{@id}", @fixtures_object)
+
+    questionnaire = Basecamp3::Questionnaire.find(@bucket_id, @id)
+    expect(questionnaire.creator).to be_instance_of(Basecamp3::Person)
+  end
+
+  it 'is bucketable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/questionnaires/#{@id}", @fixtures_object)
+
+    questionnaire = Basecamp3::Questionnaire.find(@bucket_id, @id)
+    expect(questionnaire.bucket).to be_instance_of(Basecamp3::Project)
+  end
 end

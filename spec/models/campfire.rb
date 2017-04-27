@@ -31,7 +31,21 @@ describe 'Campfire Model' do
     campfire = Basecamp3::Campfire.find(@bucket_id, @id)
     expected_campfire = json_to_model(@fixtures_object, Basecamp3::Campfire)
 
-    expect(campfire).to be_instance_of Basecamp3::Campfire
+    expect(campfire).to be_instance_of(Basecamp3::Campfire)
     expect(campfire.id).to eq(expected_campfire.id)
+  end
+
+  it 'is creatorable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/chats/#{@id}", @fixtures_object)
+
+    campfire = Basecamp3::Campfire.find(@bucket_id, @id)
+    expect(campfire.creator).to be_instance_of(Basecamp3::Person)
+  end
+
+  it 'is bucketable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/chats/#{@id}", @fixtures_object)
+
+    campfire = Basecamp3::Campfire.find(@bucket_id, @id)
+    expect(campfire.bucket).to be_instance_of(Basecamp3::Project)
   end
 end

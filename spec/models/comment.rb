@@ -71,4 +71,25 @@ describe 'Comment Model' do
 
     expect(response).to be true
   end
+
+  it 'is creatorable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/comments/#{@id}", @fixtures_object)
+
+    comment = Basecamp3::Comment.find(@bucket_id, @id)
+    expect(comment.creator).to be_instance_of(Basecamp3::Person)
+  end
+
+  it 'is bucketable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/comments/#{@id}", @fixtures_object)
+
+    comment = Basecamp3::Comment.find(@bucket_id, @id)
+    expect(comment.bucket).to be_instance_of(Basecamp3::Project)
+  end
+
+  it 'is parentable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/comments/#{@id}", @fixtures_object)
+
+    comment = Basecamp3::Comment.find(@bucket_id, @id)
+    expect(comment.parent).to be_instance_of(Basecamp3::Message)
+  end
 end

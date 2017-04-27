@@ -71,4 +71,25 @@ describe 'Message Model' do
 
     expect(response).to be true
   end
+
+  it 'is creatorable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/messages/#{@id}", @fixtures_object)
+
+    message = Basecamp3::Message.find(@bucket_id, @id)
+    expect(message.creator).to be_instance_of(Basecamp3::Person)
+  end
+
+  it 'is bucketable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/messages/#{@id}", @fixtures_object)
+
+    message = Basecamp3::Message.find(@bucket_id, @id)
+    expect(message.bucket).to be_instance_of(Basecamp3::Project)
+  end
+
+  it 'is parentable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/messages/#{@id}", @fixtures_object)
+
+    message = Basecamp3::Message.find(@bucket_id, @id)
+    expect(message.parent).to be_instance_of(Basecamp3::MessageBoard)
+  end
 end

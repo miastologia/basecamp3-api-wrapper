@@ -29,19 +29,19 @@ describe 'Vault Model' do
   it 'returns a specific vault' do
     stub_http_request(:get, "/buckets/#{@bucket_id}/vaults/#{@id}", @fixtures_object)
 
-    todo = Basecamp3::Vault.find(@bucket_id, @id)
-    expected_todo = json_to_model(@fixtures_object, Basecamp3::Vault)
+    vault = Basecamp3::Vault.find(@bucket_id, @id)
+    expected_vault = json_to_model(@fixtures_object, Basecamp3::Vault)
 
-    expect(todo).to be_instance_of Basecamp3::Vault
-    expect(todo.id).to eq(expected_todo.id)
+    expect(vault).to be_instance_of(Basecamp3::Vault)
+    expect(vault.id).to eq(expected_vault.id)
   end
 
   it 'creates a vault' do
     stub_http_request(:post, "/buckets/#{@bucket_id}/vaults/#{@parent_id}/vaults", @fixtures_object)
 
-    todo = Basecamp3::Vault.create(@bucket_id, @parent_id, { title: 'test' })
+    vault = Basecamp3::Vault.create(@bucket_id, @parent_id, { title: 'test' })
 
-    expect(todo).to be_instance_of(Basecamp3::Vault)
+    expect(vault).to be_instance_of(Basecamp3::Vault)
   end
 
   it 'should raise StandardError for missing required fields when creates a vault' do
@@ -53,14 +53,35 @@ describe 'Vault Model' do
   it 'updates a vault' do
     stub_http_request(:put, "/buckets/#{@bucket_id}/vaults/#{@id}", @fixtures_object)
 
-    todo = Basecamp3::Vault.update(@bucket_id, @id, { title: 'test' })
+    vault = Basecamp3::Vault.update(@bucket_id, @id, { title: 'test' })
 
-    expect(todo).to be_instance_of(Basecamp3::Vault)
+    expect(vault).to be_instance_of(Basecamp3::Vault)
   end
 
   it 'should raise StandardError for missing required fields when updates a vault' do
     stub_http_request(:put, "/buckets/#{@bucket_id}/vaults/#{@id}", @fixtures_object)
 
     expect{ Basecamp3::Vault.update(@bucket_id, @id, { }) }.to raise_error(StandardError)
+  end
+
+  it 'is creatorable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/vaults/#{@id}", @fixtures_object)
+
+    vault = Basecamp3::Vault.find(@bucket_id, @id)
+    expect(vault.creator).to be_instance_of(Basecamp3::Person)
+  end
+
+  it 'is bucketable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/vaults/#{@id}", @fixtures_object)
+
+    vault = Basecamp3::Vault.find(@bucket_id, @id)
+    expect(vault.bucket).to be_instance_of(Basecamp3::Project)
+  end
+
+  it 'is parentable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/vaults/#{@id}", @fixtures_object)
+
+    vault = Basecamp3::Vault.find(@bucket_id, @id)
+    expect(vault.parent).to be_instance_of(Basecamp3::Vault)
   end
 end

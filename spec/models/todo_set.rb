@@ -23,4 +23,18 @@ describe 'TODO Set Model' do
     expect(todo_set).to be_instance_of Basecamp3::TodoSet
     expect(todo_set.id).to eq(expected_todo_set.id)
   end
+
+  it 'is creatorable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/todosets/#{@id}", @fixtures_object)
+
+    todo_set = Basecamp3::TodoSet.find(@bucket_id, @id)
+    expect(todo_set.creator).to be_instance_of(Basecamp3::Person)
+  end
+
+  it 'is bucketable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/todosets/#{@id}", @fixtures_object)
+
+    todo_set = Basecamp3::TodoSet.find(@bucket_id, @id)
+    expect(todo_set.bucket).to be_instance_of(Basecamp3::Project)
+  end
 end

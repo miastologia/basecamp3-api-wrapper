@@ -71,4 +71,25 @@ describe 'TODO List Model' do
 
     expect(response).to be true
   end
+
+  it 'is creatorable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/todolists/#{@id}", @fixtures_object)
+
+    todo_list = Basecamp3::TodoList.find(@bucket_id, @id)
+    expect(todo_list.creator).to be_instance_of(Basecamp3::Person)
+  end
+
+  it 'is bucketable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/todolists/#{@id}", @fixtures_object)
+
+    todo_list = Basecamp3::TodoList.find(@bucket_id, @id)
+    expect(todo_list.bucket).to be_instance_of(Basecamp3::Project)
+  end
+
+  it 'is parentable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/todolists/#{@id}", @fixtures_object)
+
+    todo_list = Basecamp3::TodoList.find(@bucket_id, @id)
+    expect(todo_list.parent).to be_instance_of(Basecamp3::TodoSet)
+  end
 end

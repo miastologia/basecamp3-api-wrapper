@@ -43,4 +43,25 @@ describe 'Forward Model' do
 
     expect(response).to be true
   end
+
+  it 'is creatorable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/inbox_forwards/#{@id}", @fixtures_object)
+
+    forward = Basecamp3::Forward.find(@bucket_id, @id)
+    expect(forward.creator).to be_instance_of(Basecamp3::Person)
+  end
+
+  it 'is bucketable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/inbox_forwards/#{@id}", @fixtures_object)
+
+    forward = Basecamp3::Forward.find(@bucket_id, @id)
+    expect(forward.bucket).to be_instance_of(Basecamp3::Project)
+  end
+
+  it 'is parentable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/inbox_forwards/#{@id}", @fixtures_object)
+
+    forward = Basecamp3::Forward.find(@bucket_id, @id)
+    expect(forward.parent).to be_instance_of(Basecamp3::Inbox)
+  end
 end

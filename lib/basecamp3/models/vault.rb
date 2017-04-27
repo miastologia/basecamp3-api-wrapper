@@ -1,4 +1,8 @@
 class Basecamp3::Vault < Basecamp3::Model
+  include Basecamp3::Concerns::Creatorable
+  include Basecamp3::Concerns::Bucketable
+  include Basecamp3::Concerns::Parentable
+
   attr_accessor :id,
                 :status,
                 :created_at,

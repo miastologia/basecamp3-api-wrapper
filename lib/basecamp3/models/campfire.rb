@@ -1,4 +1,7 @@
 class Basecamp3::Campfire < Basecamp3::Model
+  include Basecamp3::Concerns::Creatorable
+  include Basecamp3::Concerns::Bucketable
+
   attr_accessor :id,
                 :status,
                 :created_at,

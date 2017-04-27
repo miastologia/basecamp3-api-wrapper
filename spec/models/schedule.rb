@@ -22,4 +22,18 @@ describe 'Schedule Model' do
     expect(schedule).to be_instance_of Basecamp3::Schedule
     expect(schedule.id).to eq(expected_schedule.id)
   end
+
+  it 'is creatorable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/schedules/#{@id}", @fixtures_object)
+
+    schedule = Basecamp3::Schedule.find(@bucket_id, @id)
+    expect(schedule.creator).to be_instance_of(Basecamp3::Person)
+  end
+
+  it 'is bucketable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/schedules/#{@id}", @fixtures_object)
+
+    schedule = Basecamp3::Schedule.find(@bucket_id, @id)
+    expect(schedule.bucket).to be_instance_of(Basecamp3::Project)
+  end
 end

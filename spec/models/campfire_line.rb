@@ -49,4 +49,25 @@ describe 'CampfireLine Model' do
 
     expect{ Basecamp3::CampfireLine.create(@bucket_id, @parent_id, { }) }.to raise_error(StandardError)
   end
+
+  it 'is creatorable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/chats/#{@parent_id}/lines/#{@id}", @fixtures_object)
+
+    campfire_line = Basecamp3::CampfireLine.find(@bucket_id, @parent_id, @id)
+    expect(campfire_line.creator).to be_instance_of(Basecamp3::Person)
+  end
+
+  it 'is bucketable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/chats/#{@parent_id}/lines/#{@id}", @fixtures_object)
+
+    campfire_line = Basecamp3::CampfireLine.find(@bucket_id, @parent_id, @id)
+    expect(campfire_line.bucket).to be_instance_of(Basecamp3::Project)
+  end
+
+  it 'is parentable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/chats/#{@parent_id}/lines/#{@id}", @fixtures_object)
+
+    campfire_line = Basecamp3::CampfireLine.find(@bucket_id, @parent_id, @id)
+    expect(campfire_line.parent).to be_instance_of(Basecamp3::Campfire)
+  end
 end

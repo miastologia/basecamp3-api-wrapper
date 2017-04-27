@@ -29,10 +29,31 @@ describe 'Question Model' do
   it 'returns a specific question' do
     stub_http_request(:get, "/buckets/#{@bucket_id}/questions/#{@id}", @fixtures_object)
 
-    todo = Basecamp3::Question.find(@bucket_id, @id)
-    expected_todo = json_to_model(@fixtures_object, Basecamp3::Question)
+    question = Basecamp3::Question.find(@bucket_id, @id)
+    expected_question = json_to_model(@fixtures_object, Basecamp3::Question)
 
-    expect(todo).to be_instance_of Basecamp3::Question
-    expect(todo.id).to eq(expected_todo.id)
+    expect(question).to be_instance_of Basecamp3::Question
+    expect(question.id).to eq(expected_question.id)
+  end
+
+  it 'is creatorable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/questions/#{@id}", @fixtures_object)
+
+    question = Basecamp3::Question.find(@bucket_id, @id)
+    expect(question.creator).to be_instance_of(Basecamp3::Person)
+  end
+
+  it 'is bucketable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/questions/#{@id}", @fixtures_object)
+
+    question = Basecamp3::Question.find(@bucket_id, @id)
+    expect(question.bucket).to be_instance_of(Basecamp3::Project)
+  end
+
+  it 'is parentable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/questions/#{@id}", @fixtures_object)
+
+    question = Basecamp3::Question.find(@bucket_id, @id)
+    expect(question.parent).to be_instance_of(Basecamp3::Questionnaire)
   end
 end

@@ -23,4 +23,18 @@ describe 'Inbox Model' do
     expect(inbox).to be_instance_of Basecamp3::Inbox
     expect(inbox.id).to eq(expected_inbox.id)
   end
+
+  it 'is creatorable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/inboxes/#{@id}", @fixtures_object)
+
+    inbox = Basecamp3::Inbox.find(@bucket_id, @id)
+    expect(inbox.creator).to be_instance_of(Basecamp3::Person)
+  end
+
+  it 'is bucketable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/inboxes/#{@id}", @fixtures_object)
+
+    inbox = Basecamp3::Inbox.find(@bucket_id, @id)
+    expect(inbox.bucket).to be_instance_of(Basecamp3::Project)
+  end
 end

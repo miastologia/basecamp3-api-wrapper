@@ -22,4 +22,18 @@ describe 'MessageBoard Model' do
     expect(message_board).to be_instance_of(Basecamp3::MessageBoard)
     expect(message_board.id).to eq(expected_message_board.id)
   end
+
+  it 'is creatorable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/message_boards/#{@id}", @fixtures_object)
+
+    message_board = Basecamp3::MessageBoard.find(@bucket_id, @id)
+    expect(message_board.creator).to be_instance_of(Basecamp3::Person)
+  end
+
+  it 'is bucketable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/message_boards/#{@id}", @fixtures_object)
+
+    message_board = Basecamp3::MessageBoard.find(@bucket_id, @id)
+    expect(message_board.bucket).to be_instance_of(Basecamp3::Project)
+  end
 end

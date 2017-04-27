@@ -26,7 +26,7 @@ require 'models/schedule'
 require 'models/schedule_entry'
 require 'models/question'
 require 'models/question_answer'
-require 'models/questionnairy'
+require 'models/questionnaire'
 require 'models/inbox'
 require 'models/forward'
 

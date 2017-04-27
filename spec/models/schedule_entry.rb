@@ -75,4 +75,25 @@ describe 'ScheduleEntry Model' do
 
     expect(response).to be true
   end
+
+  it 'is creatorable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/schedule_entries/#{@id}", @fixtures_object)
+
+    schedule_entry = Basecamp3::ScheduleEntry.find(@bucket_id, @id)
+    expect(schedule_entry.creator).to be_instance_of(Basecamp3::Person)
+  end
+
+  it 'is bucketable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/schedule_entries/#{@id}", @fixtures_object)
+
+    schedule_entry = Basecamp3::ScheduleEntry.find(@bucket_id, @id)
+    expect(schedule_entry.bucket).to be_instance_of(Basecamp3::Project)
+  end
+
+  it 'is parentable' do
+    stub_http_request(:get, "/buckets/#{@bucket_id}/schedule_entries/#{@id}", @fixtures_object)
+
+    schedule_entry = Basecamp3::ScheduleEntry.find(@bucket_id, @id)
+    expect(schedule_entry.parent).to be_instance_of(Basecamp3::Schedule)
+  end
 end
