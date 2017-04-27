@@ -1,0 +1,55 @@
+[
+  {
+    "id": 9007199254741453,
+    "status": "active",
+    "created_at": "2017-02-15T13:37:19.641Z",
+    "updated_at": "2017-02-15T13:37:19.935Z",
+    "type": "Question",
+    "url": "https://3.basecampapi.com/195539477/buckets/2085958499/questions/9007199254741453.json",
+    "app_url": "https://3.basecamp.com/195539477/buckets/2085958499/questions/9007199254741453",
+    "parent": {
+      "id": 9007199254741452,
+      "title": "Automatic Check-ins",
+      "type": "Questionnaire",
+      "url": "https://3.basecampapi.com/195539477/buckets/2085958499/questionnaires/9007199254741452.json",
+      "app_url": "https://3.basecamp.com/195539477/buckets/2085958499/questionnaires/9007199254741452"
+    },
+    "bucket": {
+      "id": 2085958499,
+      "name": "The Leto Laptop",
+      "type": "Project"
+    },
+    "creator": {
+      "id": 1049715914,
+      "attachable_sgid": "BAh7CEkiCGdpZAY6BkVUSSIrZ2lkOi8vYmMzL1BlcnNvbi8xMDQ5NzE1OTE0P2V4cGlyZXNfaW4GOwBUSSIMcHVycG9zZQY7AFRJIg9hdHRhY2hhYmxlBjsAVEkiD2V4cGlyZXNfYXQGOwBUMA==--f7a107e8e50594823dc25f59b44aeefc7b1a4bc8",
+      "name": "Victor Cooper",
+      "email_address": "victor@honchodesign.com",
+      "personable_type": "User",
+      "title": "Chief Strategist",
+      "bio": "Don't let your dreams be dreams",
+      "created_at": "2017-02-15T13:35:18.642Z",
+      "updated_at": "2017-02-15T13:37:50.616Z",
+      "admin": true,
+      "owner": true,
+      "time_zone": "America/Chicago",
+      "avatar_url": "https://3.basecamp-static.com/195539477/people/BAhpBMpkkT4=--83f46d5bcb97c314029a53364e3b0444a55759b3/avatar-64-x4",
+      "company": {
+        "id": 1033447817,
+        "name": "Honcho Design"
+      }
+    },
+    "paused": true,
+    "title": "How do you think the project’s been going so far?",
+    "schedule": {
+      "frequency": "every_week",
+      "days": [
+        5
+      ],
+      "hour": 16,
+      "minute": 30,
+      "start_date": "2017-02-15"
+    },
+    "answers_count": 0,
+    "answers_url": "https://3.basecampapi.com/195539477/buckets/2085958499/questions/9007199254741453/answers.json"
+  }
+]

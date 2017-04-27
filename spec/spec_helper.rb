@@ -24,6 +24,9 @@ require 'models/message_type'
 require 'models/document'
 require 'models/schedule'
 require 'models/schedule_entry'
+require 'models/question'
+require 'models/question_answer'
+require 'models/questionnairy'
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
