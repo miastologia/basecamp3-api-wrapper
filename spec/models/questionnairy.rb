@@ -5,8 +5,7 @@ describe 'Questionnairy Model' do
   include JSONFixtures
 
   before(:each) do
-    @fixtures_object = 'question.json'
-    @fixtures_collection = 'questions.json'
+    @fixtures_object = 'questionnairy.json'
 
     @bucket_id = '12345'
     @parent_id = '12345'
