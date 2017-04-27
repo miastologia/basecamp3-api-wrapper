@@ -9,6 +9,10 @@ class Basecamp3::Schedule < Basecamp3::Model
                 :title,
                 :entries_count
 
+  def entries
+    @mapped_entries ||= Basecamp3::ScheduleEntry.all(bucket.id, id)
+  end
+
   def self.find(bucket_id, id)
     Basecamp3.request.get("/buckets/#{bucket_id}/schedules/#{id}", {}, Basecamp3::Schedule)
   end
