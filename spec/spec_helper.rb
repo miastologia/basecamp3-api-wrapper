@@ -21,6 +21,7 @@ require 'models/campfire_line'
 require 'models/message_board'
 require 'models/message'
 require 'models/message_type'
+require 'models/document'
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
