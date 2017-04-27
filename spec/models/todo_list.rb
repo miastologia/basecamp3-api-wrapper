@@ -85,6 +85,16 @@ describe 'TODO List Model' do
       expect(todo_list.comments).to all be_instance_of(Basecamp3::Comment)
     end
 
+    it 'returns a list of todos' do
+      stub_http_request(:get, "/buckets/#{@bucket_id}/todolists/#{@id}", @fixtures_object)
+
+      todo_list = Basecamp3::TodoList.find(@bucket_id, @id)
+
+      stub_http_request(:get, "/buckets/#{todo_list.bucket.id}/todolists/#{todo_list.id}/todos", 'todos.json')
+
+      expect(todo_list.todos).to all be_instance_of(Basecamp3::Todo)
+    end
+
     it 'is creatorable' do
       stub_http_request(:get, "/buckets/#{@bucket_id}/todolists/#{@id}", @fixtures_object)
 

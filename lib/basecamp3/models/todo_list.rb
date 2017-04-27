@@ -16,6 +16,10 @@ class Basecamp3::TodoList < Basecamp3::Model
 
   REQUIRED_FIELDS = %w(name)
 
+  def todos
+    @mapped_todos ||= Basecamp3::Todo.all(bucket.id, id)
+  end
+
   ##
   # Optional query parameters:
   # status - when set to archived or trashed, will return archived or trashed to-do lists that are in this to-do set.
