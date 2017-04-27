@@ -80,7 +80,7 @@ describe 'Document Model' do
 
       document = Basecamp3::Document.find(@bucket_id, @id)
 
-      stub_http_request(:get, "/buckets/#{document.bucket.id}/recordings/#{document.id}/comments", @fixtures_collection)
+      stub_http_request(:get, "/buckets/#{document.bucket.id}/recordings/#{document.id}/comments", 'comments.json')
 
       expect(document.comments).to all be_instance_of(Basecamp3::Comment)
     end

@@ -96,7 +96,7 @@ describe 'TODO Model' do
 
       todo = Basecamp3::Todo.find(@bucket_id, @id)
 
-      stub_http_request(:get, "/buckets/#{todo.bucket.id}/recordings/#{todo.id}/comments", @fixtures_collection)
+      stub_http_request(:get, "/buckets/#{todo.bucket.id}/recordings/#{todo.id}/comments", 'comments.json')
 
       expect(todo.comments).to all be_instance_of(Basecamp3::Comment)
     end

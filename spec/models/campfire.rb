@@ -43,7 +43,7 @@ describe 'Campfire Model' do
 
       campfire = Basecamp3::Campfire.find(@bucket_id, @id)
 
-      stub_http_request(:get, "/buckets/#{campfire.bucket.id}/chats/#{campfire.id}/lines", @fixtures_collection)
+      stub_http_request(:get, "/buckets/#{campfire.bucket.id}/chats/#{campfire.id}/lines", 'campfire_lines.json')
 
 
       expect(campfire.lines).to all be_instance_of(Basecamp3::CampfireLine)

@@ -84,7 +84,7 @@ describe 'ScheduleEntry Model' do
 
       schedule_entry = Basecamp3::ScheduleEntry.find(@bucket_id, @id)
 
-      stub_http_request(:get, "/buckets/#{schedule_entry.bucket.id}/recordings/#{schedule_entry.id}/comments", @fixtures_collection)
+      stub_http_request(:get, "/buckets/#{schedule_entry.bucket.id}/recordings/#{schedule_entry.id}/comments", 'comments.json')
 
       expect(schedule_entry.comments).to all be_instance_of(Basecamp3::Comment)
     end

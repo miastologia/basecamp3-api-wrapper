@@ -80,7 +80,7 @@ describe 'Message Model' do
 
       message = Basecamp3::Message.find(@bucket_id, @id)
 
-      stub_http_request(:get, "/buckets/#{message.bucket.id}/recordings/#{message.id}/comments", @fixtures_collection)
+      stub_http_request(:get, "/buckets/#{message.bucket.id}/recordings/#{message.id}/comments", 'comments.json')
 
       expect(message.comments).to all be_instance_of(Basecamp3::Comment)
     end
