@@ -101,6 +101,14 @@ describe 'TODO Model' do
       expect(todo.comments).to all be_instance_of(Basecamp3::Comment)
     end
 
+    it 'returns a list of assignees' do
+      stub_http_request(:get, "/buckets/#{@bucket_id}/todos/#{@id}", @fixtures_object)
+
+      todo = Basecamp3::Todo.find(@bucket_id, @id)
+
+      expect(todo.assignees).to all be_instance_of(Basecamp3::Person)
+    end
+
     it 'is creatorable' do
       stub_http_request(:get, "/buckets/#{@bucket_id}/todos/#{@id}", @fixtures_object)
 

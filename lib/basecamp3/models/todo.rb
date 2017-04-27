@@ -11,11 +11,14 @@ class Basecamp3::Todo < Basecamp3::Model
                 :updated_at,
                 :content,
                 :description,
-                :assignee_ids,
                 :starts_on,
                 :due_on
 
   REQUIRED_FIELDS = %w(content)
+
+  def assignees
+    @mapped_assignees ||= @assignees.map{ |a| Basecamp3::Person.new(a) }
+  end
 
   ##
   # Optional query parameters:
