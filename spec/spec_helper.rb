@@ -28,6 +28,7 @@ require 'models/question'
 require 'models/question_answer'
 require 'models/questionnairy'
 require 'models/inbox'
+require 'models/forward'
 
 WebMock.disable_net_connect!(allow_localhost: true)
 

@@ -25,6 +25,7 @@ require 'basecamp3/models/question'
 require 'basecamp3/models/question_answer'
 require 'basecamp3/models/questionnairy'
 require 'basecamp3/models/inbox'
+require 'basecamp3/models/forward'
 
 module Basecamp3
   class << self
