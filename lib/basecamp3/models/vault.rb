@@ -14,6 +14,14 @@ class Basecamp3::Vault < Basecamp3::Model
 
   REQUIRED_FIELDS = %w(title)
 
+  def documents
+    @mapped_documents ||= Basecamp3::Document.all(bucket.id, id)
+  end
+
+  def vaults
+    @mapped_vaults ||= Basecamp3::Vault.all(bucket.id, id)
+  end
+
   ##
   # Optional query parameters:
   # page - to paginate results
