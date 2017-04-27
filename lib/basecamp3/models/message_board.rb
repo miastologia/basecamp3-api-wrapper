@@ -9,6 +9,10 @@ class Basecamp3::MessageBoard < Basecamp3::Model
                 :title,
                 :messages_count
 
+  def messages
+    @mapped_messages ||= Basecamp3::Message.all(bucket.id, id)
+  end
+
   def self.find(bucket_id, id)
     Basecamp3.request.get("/buckets/#{bucket_id}/message_boards/#{id}", {}, Basecamp3::MessageBoard)
   end
