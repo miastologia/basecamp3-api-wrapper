@@ -22,6 +22,8 @@ require 'models/message_board'
 require 'models/message'
 require 'models/message_type'
 require 'models/document'
+require 'models/schedule'
+require 'models/schedule_entry'
 
 WebMock.disable_net_connect!(allow_localhost: true)
 

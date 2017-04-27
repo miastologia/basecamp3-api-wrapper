@@ -19,6 +19,8 @@ require 'basecamp3/models/message_board'
 require 'basecamp3/models/message'
 require 'basecamp3/models/message_type'
 require 'basecamp3/models/document'
+require 'basecamp3/models/schedule'
+require 'basecamp3/models/schedule_entry'
 
 module Basecamp3
   class << self
