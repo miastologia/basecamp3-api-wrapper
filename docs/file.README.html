@@ -79,14 +79,22 @@
 
 <h2 id="label-Basic+usage">Basic usage</h2>
 
-<p>First, you have to establish a connection to Basecamp3. <code>ruby
-Basecamp3.connect(YOUR_BASECAMP3_ACCOUNT_ID, YOUR_BASECAMP3_ACCESS_TOKEN)
-</code></p>
+<p>First, you have to establish a connection to Basecamp3.</p>
 
-<p>That&#39;s all. You can make requests now. E.g.: to get the TODO just call
-the <code>find</code> method from the <code>Basecamp3::Todo</code> class:
-<code>ruby todo = Basecamp3::Todo.find(BUCKET_ID, TODO_ID) todo.content # =
-&#39;Hello world!&#39; </code></p>
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="Basecamp3.html" title="Basecamp3 (module)">Basecamp3</a></span></span><span class='period'>.</span><span class='id identifier rubyid_connect'><span class='object_link'><a href="Basecamp3.html#connect-class_method" title="Basecamp3.connect (method)">connect</a></span></span><span class='lparen'>(</span><span class='const'>YOUR_BASECAMP3_ACCOUNT_ID</span><span class='comma'>,</span> <span class='const'>YOUR_BASECAMP3_ACCESS_TOKEN</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>That&#39;s all. You can make requests now. E.g.: to get the TODO, just call
+the <code>find</code> method from the <code>Basecamp3::Todo</code> class:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_todo'>todo</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Basecamp3.html" title="Basecamp3 (module)">Basecamp3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Basecamp3/Todo.html" title="Basecamp3::Todo (class)">Todo</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'><span class='object_link'><a href="Basecamp3/Todo.html#find-class_method" title="Basecamp3::Todo.find (method)">find</a></span></span><span class='lparen'>(</span><span class='const'>BUCKET_ID</span><span class='comma'>,</span> <span class='const'>TODO_ID</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_todo'>todo</span><span class='period'>.</span><span class='id identifier rubyid_content'>content</span> <span class='comment'># = &#39;Hello world!&#39;
+</span></code></pre>
+
+<h2 id="label-Documentation">Documentation</h2>
+
+<p>For the full documentation go <a
+href="https://miastologia.github.io/basecamp3-api-wrapper/">here</a>.</p>
 
 <h2 id="label-TODO">TODO</h2>
 
@@ -131,7 +139,7 @@ href="http://opensource.org/licenses/MIT">MIT License</a>.</p>
 </div></div>
 
       <div id="footer">
-  Generated on Tue May  9 15:18:01 2017 by
+  Generated on Tue May  9 15:26:23 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.2.2).
 </div>
