@@ -1,6 +1,8 @@
 # Basecamp3 API Wrapper
 
-A simple Ruby Wrapper for the Basecamp 3 API
+A simple Ruby Wrapper for the Basecamp3 API.
+
+[For more information about Basecamp3 API, see the official documentation](https://github.com/basecamp/bc3-api)
 
 ## Installation
 
@@ -20,11 +22,12 @@ Or install it yourself as:
 
 ## Basic usage
 
-First, you have to establish a connection to Basecamp3.
+First, you have to establish a connection to Basecamp3. If you don't know how to get the access token, [see the official authentication guide](https://github.com/basecamp/api/blob/master/sections/authentication.md)
 
     Basecamp3.connect(YOUR_BASECAMP3_ACCOUNT_ID, YOUR_BASECAMP3_ACCESS_TOKEN)
 
 That's all. You can make requests now. 
+
 E.g.: to get the TODO, just call the `find` method from the `Basecamp3::Todo` class:
 
     todo = Basecamp3::Todo.find(BUCKET_ID, TODO_ID)
