@@ -38,6 +38,10 @@ module Basecamp3
   class << self
     HOST = 'https://3.basecampapi.com'
 
+    # Establishes a connection with basecamp
+    #
+    # @param [Integer] account_id the id of your basecamp account
+    # @param [Integer] access_token the oauth2 access token
     def connect(account_id, access_token)
       @account_id = account_id
       @access_token = access_token
@@ -46,6 +50,10 @@ module Basecamp3
       @request = Basecamp3::Request.new(@access_token, @uri)
     end
 
+    # Returns the request object
+    #
+    # @return [Basecamp3::Request]
+    # @raise [StandardError] raises an error if a connection is not established
     def request
       @request || raise('You have to call Basecamp.connect method first')
     end

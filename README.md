@@ -18,9 +18,19 @@ Or install it yourself as:
 
     $ gem install basecamp3
 
-## Usage
+## Basic usage
 
-TODO: Write usage instructions here
+First, you have to establish a connection to Basecamp3.
+```ruby
+Basecamp3.connect(YOUR_BASECAMP3_ACCOUNT_ID, YOUR_BASECAMP3_ACCESS_TOKEN)
+```
+
+That's all. You can make requests now. 
+E.g.: to get the TODO, just call the `find` method from the `Basecamp3::Todo` class:
+```ruby
+todo = Basecamp3::Todo.find(BUCKET_ID, TODO_ID)
+todo.content # = 'Hello world!'
+```
 
 ## TODO
 

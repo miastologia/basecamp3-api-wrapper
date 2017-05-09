@@ -1,4 +1,11 @@
+# The basecamp type to wrapper type mapper
 class Basecamp3::TypeMapper
+
+  # Maps the basecamp model type to wrapper model type.
+  #
+  # @param [String] basecamp_type the basecamp model name
+  #
+  # @return [Class, OpenStruct]
   def self.map(basecamp_type)
     case basecamp_type
     when 'Project'

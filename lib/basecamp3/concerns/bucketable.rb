@@ -1,6 +1,11 @@
+# A concern for bucketable models
 module Basecamp3
   module Concerns
     module Bucketable
+
+      # Returns the related bucket.
+      #
+      # @return [Basecamp3::Model]
       def bucket
         return nil if @bucket.nil?
 
