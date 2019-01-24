@@ -10,7 +10,7 @@ module Basecamp3
         return nil if @parent.nil?
 
         klass = TypeMapper.map(@parent['type'])
-        @mapped_parent ||= klass.new(@bucket)
+        @mapped_parent ||= klass.new(@parent)
       end
     end
   end
